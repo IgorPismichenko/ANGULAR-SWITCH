@@ -1,0 +1,35 @@
+<header>
+    <div>
+        <h3>Bill Gates</h3>
+    </div>
+    <div>
+        <button class="button" (click)="bioClick()">Біографія</button>
+        <button class="button" (click)="quoteClick()">Цитати</button>
+        <button class="button" (click)="refClick()">Посилання</button>
+        <button class="button" (click)="mainClick()">Закрити</button>
+    </div>
+</header>
+<main [ngSwitch]="block">
+    <ng-template ngSwitchCase="1">
+        <info-comp></info-comp>
+    </ng-template>
+    <ng-template ngSwitchCase="2">
+        <div class="mainDiv">
+            <input type="text" [(ngModel)]="newQuote"/>
+            <button class="button2" (click)="addQuote(newQuote)">Додати цитату</button><br/>
+        </div>
+        <quotes-comp [quotes]="Quotes"></quotes-comp>
+    </ng-template>
+    <ng-template ngSwitchCase="3">
+        <div class="mainDiv">
+            <input type="text" [(ngModel)]="newRef"/>
+            <button class="button2" (click)="addRef(newRef)">Додати посилання</button><br/>
+        </div>
+        <ref-comp [refs]="Refs"></ref-comp>
+    </ng-template>
+    <ng-template ngSwitchCase="0">
+        <div>
+            <img style="width: 1200px;height: 1000px;" src="../assets/Microsoft.png" title="Microsoft logo"/>
+        </div>
+    </ng-template>
+</main>
